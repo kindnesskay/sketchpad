@@ -8,24 +8,23 @@ class SketchPad {
     this.isDrawing = false;
   }
   #addEventListener() {
-    const lastPath = [];
     this.canvas.onmousedown = (evt) => {
-      const mouse = this.#getMouse(evt);
-      lastPath.push(mouse);
       this.isDrawing = true;
+      const mouse = this.#getMouse(evt);
+      this.paths.push([mouse])
+
     };
 
     this.canvas.onmousemove = (evt) => {
       if (!this.isDrawing) return;
       const mouse = this.#getMouse(evt);
+      const lastPath = this.paths[this.paths.length - 1];
       lastPath.push(mouse);
-      this.#draw(lastPath)
+      this.#reDraw();
     };
 
     this.canvas.onmouseup = () => {
-      this.paths.push(lastPath);
       this.isDrawing = false;
-    //   this.#reDraw();
     };
   }
 
@@ -40,18 +39,10 @@ class SketchPad {
 
   #reDraw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.ctx.moveTo(...this.paths[0][0]);
-    for (let i = 0; i < this.paths[0].length; i++) {
-      this.ctx.lineTo(...this.paths[0][i]);
-      console.log(i);
-    }
-    this.ctx.stroke();
+   draw.paths(this.ctx,this.paths)
   }
 
-  #draw(array) {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    draw.path(this.ctx,array)
-  }
+  
 }
 
 export default SketchPad;
