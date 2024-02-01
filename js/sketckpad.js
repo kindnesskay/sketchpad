@@ -69,6 +69,11 @@ class SketchPad {
   setColor(color) {
     this.color = color;
   }
+
+  clear(){
+    this.paths=[]
+    this.#reDraw()
+  }
 }
 
 export default SketchPad;

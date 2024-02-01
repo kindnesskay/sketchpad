@@ -29,12 +29,18 @@ canvas {
 
 .top{
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 10px;
+}
+.top .tools{
+  display: flex;
   align-items: center;
+  gap: 5px;
 }
 .top .colors{
   display: flex;
   height: fit-content;
-  padding-left: 5px ;
   gap: 5px;
 }
 .top .colors .color-btn{
@@ -53,4 +59,13 @@ canvas {
 }
 .top .colors #blue-btn{
 background-color: blue;
+}
+.top .colors #black-btn{
+background-color: black;
+}
+
+.top .tools .clear-btn{
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
 }
