@@ -53,6 +53,7 @@ canvas {
 
 .top .colors  #red-btn{
   background-color: red;
+  
 }
 .top .colors  #green-btn{
   background-color:green;
@@ -62,6 +63,10 @@ background-color: blue;
 }
 .top .colors #black-btn{
 background-color: black;
+}
+
+.top .colors button:hover{
+  border: 2px solid white;
 }
 
 .top .tools .clear-btn{
